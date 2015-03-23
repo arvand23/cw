@@ -1,7 +1,15 @@
 Cw2::Application.routes.draw do
   resources :declines
 
-  resources :bookings
+  resources :bookings do
+    collection do
+      get :apply
+    end
+    member do
+      get :makeexpert
+      get :revokeexpert
+    end
+  end
 
   get "static/home"
   get "static/about"

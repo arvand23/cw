@@ -2,16 +2,27 @@
 <h2>Connect with a Ruby on Rails expert to walk you through your coding roadblock.</h2>
 
 <% if logged_in? && current_user.admin? %>
-	<p>Admin priviledges.</p>
+	<p>Admin priviledges. These people have requested to become experts:</p>
 	<!-- list of all users.pending_expert? -->
+	<% @pending_experts.each do |f| %>
+		</br>Name: <%= f.name %></br>
+		</br>Email: <%= f.email %></br>
+		<%= link_to 'Make Expert', makeexpert_booking_path(f), confirm: 'Make expert?' %>
+	<% end %>
+	</br></br><p>Admin priviledges. These people are already experts:</p>
+	<% @experts.each do |f| %>
+		</br>Name: <%= f.name %></br>
+		</br>Email: <%= f.email %></br>
+		<%= link_to 'Revoke Expert', revokeexpert_booking_path(f), confirm: 'Revoke expert?' %>
+	<% end %>
 <% end %>
 
 <% if logged_in? && current_user.expert? %> 
 	<p>You're an expert.</p>
 <% end %>
 
-<% if logged_in? && current_user.expert = false %>
-	<p>You're a regular person. Apply to be an expert.</p>
+<% if logged_in? && current_user.expert == false && current_user.pending_expert == false %>
+	<p>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </p>
 <% end %>
 
 <% unless logged_in? %>
