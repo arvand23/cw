@@ -21,7 +21,7 @@
 	<p>You're an expert.</p>
 <% end %>
 
-<% if logged_in? && current_user.expert == false && current_user.pending_expert == false %>
+<% if logged_in? && current_user.expert == (false || nil) && current_user.pending_expert == (false || nil) %>
 	<p>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </p>
 <% end %>
 
