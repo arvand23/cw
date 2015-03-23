@@ -9,6 +9,11 @@
 		</br>Email: <%= f.email %></br>
 		<%= link_to 'Make Expert', makeexpert_booking_path(f), confirm: 'Make expert?' %>
 	<% end %>
+	<% @pending_experts_nil.each do |f| %>
+		</br>Name: <%= f.name %></br>
+		</br>Email: <%= f.email %></br>
+		<%= link_to 'Make Expert', makeexpert_booking_path(f), confirm: 'Make expert?' %>
+	<% end %>
 	</br></br><p>Admin priviledges. These people are already experts:</p>
 	<% @experts.each do |f| %>
 		</br>Name: <%= f.name %></br>
@@ -21,9 +26,13 @@
 	<p>You're an expert.</p>
 <% end %>
 
-<% if logged_in? && current_user.expert == (false || nil) && current_user.pending_expert == (false || nil) %>
+<% if logged_in? && current_user.expert == nil && current_user.pending_expert == nil %>
 	<p>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </p>
 <% end %>
+
+<% if logged_in? && current_user.expert == false && current_user.pending_expert == false %>
+	<p>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </p>
+<% end %> 
 
 <% unless logged_in? %>
 	<p>You ain't logged in, you ain't nobody.</p>

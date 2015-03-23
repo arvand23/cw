@@ -13,3 +13,7 @@
 <% if logged_in? && current_user.expert == false && current_user.pending_expert == false %>
 	<p><%= link_to 'Apply', apply_bookings_path, confirm: 'Are you sure you want to apply to be an expert?' %></p> <!-- ??? I put the apply method in bookings... it works... not sure where to put it since there is no user controller -->
 <% end %>
+
+<% if logged_in? && current_user.expert == nil && current_user.pending_expert == nil %>
+	<p><%= link_to 'Apply', apply_bookings_path, confirm: 'Are you sure you want to apply to be an expert?' %></p>
+<% end %>
