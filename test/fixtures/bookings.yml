@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  skill: MyString
+  user_id: 1
+  pending_expert: false
+  time_request1: 2015-03-22 18:27:30
+  time_request2: 2015-03-22 18:27:30
+  time_request3: 2015-03-22 18:27:30
+  time_accepted: 2015-03-22 18:27:30
+
+two:
+  skill: MyString
+  user_id: 1
+  pending_expert: false
+  time_request1: 2015-03-22 18:27:30
+  time_request2: 2015-03-22 18:27:30
+  time_request3: 2015-03-22 18:27:30
+  time_accepted: 2015-03-22 18:27:30

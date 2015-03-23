@@ -1,0 +1,2 @@
+class DeclinesController < ApplicationController
+end

@@ -1,4 +1,8 @@
 Cw2::Application.routes.draw do
+  resources :declines
+
+  resources :bookings
+
   get "static/home"
   get "static/about"
   get "static/dashboard"

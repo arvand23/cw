@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322020639) do
+ActiveRecord::Schema.define(version: 20150323003019) do
+
+  create_table "bookings", force: true do |t|
+    t.string   "skill"
+    t.integer  "user_id"
+    t.boolean  "pending_expert"
+    t.datetime "time_request1"
+    t.datetime "time_request2"
+    t.datetime "time_request3"
+    t.datetime "time_accepted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "declines", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "booking_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider"
@@ -24,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150322020639) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "booking_id"
   end
 
 end
