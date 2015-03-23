@@ -1,4 +1,21 @@
-<h1>Static#home</h1>
-<p>Find me in app/views/static/home.html.erb</p>
-<p>You're an admin</p>
-<p>You're an expert</p>
+<h1>Cakewalk</h1>
+<h2>Connect with a Ruby on Rails expert to walk you through your coding roadblock.</h2>
+
+<% if logged_in? && current_user.admin? %>
+	<p>Admin priviledges.</p>
+	<!-- list of all users.pending_expert? -->
+<% end %>
+
+<% if logged_in? && current_user.expert? %> 
+	<p>You're an expert.</p>
+<% end %>
+
+<% if logged_in? && current_user.expert = false %>
+	<p>You're a regular person. Apply to be an expert.</p>
+<% end %>
+
+<% unless logged_in? %>
+	<p>You ain't logged in, you ain't nobody.</p>
+<% end %>
+
+
