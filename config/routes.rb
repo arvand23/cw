@@ -5,9 +5,12 @@ Cw2::Application.routes.draw do
     collection do
       get :apply
     end
-    member do
+    member do #member passes id
       get :makeexpert
       get :revokeexpert
+      get :accepttime1
+      get :accepttime2
+      get :accepttime3
     end
   end
 

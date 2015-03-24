@@ -8,6 +8,8 @@ class Booking < ActiveRecord::Base
 	validate :time2_request_in_future?
 	validate :time3_request_in_future?
 
+	def self.pending_booking; where('time_accepted IS NULL'); end
+
 	def time1_request_in_future?
     	unless Date.today < self.time_request1
     		errors.add('Time requested', 'needs to be in future')
@@ -20,7 +22,7 @@ class Booking < ActiveRecord::Base
     	end
   	end
 
-  		def time3_request_in_future?
+  	def time3_request_in_future?
     	unless Date.today < self.time_request1
     		errors.add('The third time requested', 'needs to be in future')
     	end

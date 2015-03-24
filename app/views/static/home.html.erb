@@ -25,6 +25,17 @@
 <% if logged_in? && current_user.expert? %> 
 	<p>You're an expert.</p>
 	<!-- list of users with time_request1, time_request2, time_request3 -->
+	<% @pending_bookings.each do |f| %>
+		</br>Name: <%= f.user.name %></br>
+		</br>Email: <%= f.user.email %></br>
+		</br><%= f.time_request1 %></br><%= link_to 'Select', accepttime1_booking_path(f), confirm: 'Do you want to Cakewalk this person at this time?' %>
+		</br><%= f.time_request2 %></br><%= link_to 'Select', accepttime2_booking_path(f), confirm: 'Do you want to Cakewalk this person at this time?' %>
+		</br><%= f.time_request3 %></br><%= link_to 'Select', accepttime3_booking_path(f), confirm: 'Do you want to Cakewalk this person at this time?' %>
+		<!--</br>decline this person-->
+	</br></br></br>
+	<% end %>
+
+
 <% end %>
 
 <% if logged_in? && current_user.expert == nil && current_user.pending_expert == nil %>
@@ -32,7 +43,7 @@
 	<h4>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </h4>
 <% end %>
 
-<% if logged_in? && current_user.expert == false && current_user.pending_expert == false %>
+<% if logged_in? && current_user.expert == false && current_user.pending_expert == false %> <!-- add && if cc on file -->
 	<!-- same as code from above if block -->
 	<%=form_for(@requestedtimes) do |requestedtimes| %>
 		<!-- for errors -->
@@ -49,11 +60,14 @@
         <%= requestedtimes.datetime_select :time_request2 %></br>
         <%= requestedtimes.datetime_select :time_request3 %></br>
         <%= requestedtimes.hidden_field :user_id, :value => current_user.id %>
+        <!-- hidden field for skill? -->
 
         <%= requestedtimes.submit "Find me an Expert" %>
     <% end %></br>
 	<p>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </p>
 <% end %> 
+
+<!-- if no card_id on file, link goes to CC page and user doesn't select any times -->
 
 <% unless logged_in? %>
 	<p>You ain't logged in, you ain't nobody.</p>

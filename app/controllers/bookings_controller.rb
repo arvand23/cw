@@ -9,6 +9,26 @@ class BookingsController < ApplicationController
 		end
 	end
 
+	def accepttime1
+		@booking = Booking.find(params[:id])
+		@booking.time_accepted = @booking.time_request1
+		@booking.save
+		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
+	end
+
+	def accepttime2
+		@booking = Booking.find(params[:id])
+		@booking.time_accepted = @booking.time_request2
+		@booking.save
+		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
+	end
+
+	def accepttime3
+		@booking = Booking.find(params[:id])
+		@booking.time_accepted = @booking.time_request3
+		@booking.save
+		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
+	end
 
 	def apply
 		@user = current_user
