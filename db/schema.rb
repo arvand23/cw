@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323215051) do
+ActiveRecord::Schema.define(version: 20150324225226) do
 
   create_table "bookings", force: true do |t|
     t.string   "skill"
     t.integer  "user_id"
-    t.boolean  "pending_expert"
+    t.boolean  "pending_expert", default: false
     t.datetime "time_request1"
     t.datetime "time_request2"
     t.datetime "time_request3"
@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(version: 20150323215051) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "email"
-    t.boolean  "expert"
+    t.boolean  "expert",           default: false
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "booking_id"
-    t.boolean  "pending_expert"
+    t.boolean  "pending_expert",   default: false
   end
 
 end

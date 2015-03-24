@@ -1,15 +1,10 @@
 <h1>Cakewalk</h1>
 <h2>Connect with a Ruby on Rails expert to walk you through your coding roadblock.</h2>
-
+<!--ADMIN-->
 <% if logged_in? && current_user.admin? %>
 	<p>Admin priviledges. These people have requested to become experts:</p>
 	<!-- list of all users.pending_expert? -->
 	<% @pending_experts.each do |f| %>
-		</br>Name: <%= f.name %></br>
-		</br>Email: <%= f.email %></br>
-		<%= link_to 'Make Expert', makeexpert_booking_path(f), confirm: 'Make expert?' %>
-	<% end %>
-	<% @pending_experts_nil.each do |f| %>
 		</br>Name: <%= f.name %></br>
 		</br>Email: <%= f.email %></br>
 		<%= link_to 'Make Expert', makeexpert_booking_path(f), confirm: 'Make expert?' %>
@@ -21,10 +16,9 @@
 		<%= link_to 'Revoke Expert', revokeexpert_booking_path(f), confirm: 'Revoke expert?' %>
 	<% end %>
 <% end %>
-
+<!--EXPERT-->
 <% if logged_in? && current_user.expert? %> 
 	<p>You're an expert.</p>
-	<!-- list of users with time_request1, time_request2, time_request3 -->
 	<% @pending_bookings.each do |f| %>
 		</br>Name: <%= f.user.name %></br>
 		</br>Email: <%= f.user.email %></br>
@@ -34,16 +28,9 @@
 		<!--</br>decline this person-->
 	</br></br></br>
 	<% end %>
-
-
 <% end %>
-
-<% if logged_in? && current_user.expert == nil && current_user.pending_expert == nil %>
-	<!-- user submits time_request1 time_request2 time_request3 , same as code below-->
-	<h4>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </h4>
-<% end %>
-
-<% if logged_in? && current_user.expert == false && current_user.pending_expert == false %> <!-- add && if cc on file -->
+<!--REGULAR USER... copy below section for experts as well-->
+<% if logged_in? && current_user.expert == false %> <!-- add && if cc on file -->
 	<!-- same as code from above if block -->
 	<%=form_for(@requestedtimes) do |requestedtimes| %>
 		<!-- for errors -->
@@ -64,10 +51,15 @@
 
         <%= requestedtimes.submit "Find me an Expert" %>
     <% end %></br>
-	<p>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </p>
+    	<% if logged_in? && current_user.expert == false && current_user.pending_expert == false %>
+			<p><%= link_to "Apply to be an expert.", static_apply_path %> </p>
+		<% end %>
+		<% if logged_in? && current_user.expert == false && current_user.pending_expert == true %>
+			<p>Your application to be an expert is under review.</p>
+		<% end %>
 <% end %> 
 
-<!-- if no card_id on file, link goes to CC page and user doesn't select any times -->
+<!-- if no card_id on file, a link goes to CC page and user doesn't select any times -->
 
 <% unless logged_in? %>
 	<p>You ain't logged in, you ain't nobody.</p>
