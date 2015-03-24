@@ -1,4 +1,15 @@
 class BookingsController < ApplicationController
+	def create
+		@requestedtimes = Booking.new(booking_params)
+
+		if @requestedtimes.save
+			redirect_to root_path, :notice => "You will receive an email when we match you with an expert!"
+		else
+			render static_home_path
+		end
+	end
+
+
 	def apply
 		@user = current_user
 		@user.pending_expert = true
@@ -19,4 +30,9 @@ class BookingsController < ApplicationController
 		@user.save
 		redirect_to static_home_path, :notice => "You took away expert priviledges from #{@user.email}."
 	end
+
+	private
+		def booking_params
+			params.require(:booking).permit(:time_request1, :time_request2, :time_request3, :user_id)
+		end
 end

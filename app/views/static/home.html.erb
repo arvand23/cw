@@ -24,13 +24,34 @@
 
 <% if logged_in? && current_user.expert? %> 
 	<p>You're an expert.</p>
+	<!-- list of users with time_request1, time_request2, time_request3 -->
 <% end %>
 
 <% if logged_in? && current_user.expert == nil && current_user.pending_expert == nil %>
-	<p>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </p>
+	<!-- user submits time_request1 time_request2 time_request3 , same as code below-->
+	<h4>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </h4>
 <% end %>
 
 <% if logged_in? && current_user.expert == false && current_user.pending_expert == false %>
+	<!-- same as code from above if block -->
+	<%=form_for(@requestedtimes) do |requestedtimes| %>
+		<!-- for errors -->
+		<% if @requestedtimes.errors.any? %>
+          <h2><%= pluralize(@requestedtimes.errors.count, "error")%> made this not work. </h2>
+          <ul>
+            <% @requestedtimes.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <%= requestedtimes.datetime_select :time_request1 %></br>
+        <%= requestedtimes.datetime_select :time_request2 %></br>
+        <%= requestedtimes.datetime_select :time_request3 %></br>
+        <%= requestedtimes.hidden_field :user_id, :value => current_user.id %>
+
+        <%= requestedtimes.submit "Find me an Expert" %>
+    <% end %></br>
 	<p>You're a regular person. <%= link_to "Apply to be an expert.", static_apply_path %> </p>
 <% end %> 
 
