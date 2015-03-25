@@ -30,7 +30,7 @@
 	<% end %>
 <% end %>
 <!--REGULAR USER... copy below section for experts as well-->
-<% if logged_in? && current_user.expert == false %> <!-- add && if cc not nil... if cc not on file-->
+<% if logged_in? && current_user.expert == false && current_user.card_id != nil %> <!-- add && if cc not nil... if cc not on file-->
 	<!-- same as code from above if block -->
 	<%=form_for(@requestedtimes) do |requestedtimes| %>
 		<!-- for errors -->
