@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324225226) do
+ActiveRecord::Schema.define(version: 20150325004550) do
 
   create_table "bookings", force: true do |t|
     t.string   "skill"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150324225226) do
     t.datetime "time_accepted"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "complete_code"
   end
 
   create_table "declines", force: true do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150324225226) do
     t.datetime "updated_at"
     t.integer  "booking_id"
     t.boolean  "pending_expert",   default: false
+    t.string   "card_id"
   end
 
 end

@@ -1,0 +1,11 @@
+<p>Before booking an expert, you need to complete registration. You will only be charged after your Cakewalk session.</br>
+$1/ minute, first 5 minutes are free.</p>
+
+<%= form_for @current_user, url: inputcard_bookings_path, method: 'POST' do %>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Your Cakewalk account"
+          data-amount="0"
+          data-email="<%= current_user.email %>">
+  </script>
+<% end %>

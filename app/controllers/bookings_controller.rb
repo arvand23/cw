@@ -9,6 +9,34 @@ class BookingsController < ApplicationController
 		end
 	end
 
+	#input card
+	def finishregistration
+		@current_user = current_user
+	end
+
+	def inputcard #adds card_id
+		    if logged_in?
+		      # Create a customer to bill later with stripe
+		      customer = Stripe::Customer.create(
+		        :email => current_user.email,
+		        #:name => current_user.name,
+		        :card  => params[:stripeToken]#,
+		        #:customer => current_user.card_id
+		      )
+
+		      # Save stripe customer id into card_id 
+		      if current_user.update_attribute(:card_id, customer.id) # Card ID / Customer ID = Same same
+		        redirect_to static_home_path, :notice => "Your registration is complete. Now you can book an expert!"
+		      else
+		        # Form failed
+		        redirect_to finishregistration, :notice => "Something went wrong withs storing your payment info."
+		      end
+		    else
+		      # This should never happen
+		      render text: "Stripe Error"
+		    end
+	end
+
 	def accepttime1
 		@booking = Booking.find(params[:id])
 		@booking.time_accepted = @booking.time_request1
