@@ -13,6 +13,7 @@ Cw2::Application.routes.draw do
       get :accepttime1
       get :accepttime2
       get :accepttime3 
+      get :room
     end
   end
 

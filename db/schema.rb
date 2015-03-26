@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325004550) do
+ActiveRecord::Schema.define(version: 20150326022054) do
 
   create_table "bookings", force: true do |t|
     t.string   "skill"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150325004550) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "complete_code"
+    t.string   "permalink"
   end
 
   create_table "declines", force: true do |t|

@@ -9,6 +9,8 @@ class Booking < ActiveRecord::Base
 	validate :time3_request_in_future?
 
 	def self.pending_booking; where('time_accepted IS NULL'); end
+  def self.accepted; where('time_accepted IS NOT NULL'); end
+
 
 	def time1_request_in_future?
     	unless Date.today < self.time_request1
@@ -22,10 +24,15 @@ class Booking < ActiveRecord::Base
     	end
   	end
 
-  	def time3_request_in_future?
+  def time3_request_in_future?
     	unless Date.today < self.time_request1
     		errors.add('The third time requested', 'needs to be in future')
     	end
-  	end
+  end
+
+  def create_permalink #before i called it permalink, it was generating an error because you cant have the same method name and column name.
+    self.permalink = Digest::SHA1.hexdigest("#{Time.now} - #{self.id} - #{self.time_request1}")
+    self.save
+  end
 
 end
