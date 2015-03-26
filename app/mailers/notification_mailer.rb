@@ -1,5 +1,5 @@
 class NotificationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "aalviri@gmail.com"
 
   def confirmed(booking)
   	@booking = booking
