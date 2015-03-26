@@ -11,7 +11,7 @@ ActionMailer::Base.smtp_settings = {
   :authentication => :plain,
   :user_name      => ENV['arvando'],
   :password       => ENV['syruppy'],
-  :domain         => 'heroku.com',
+  :domain         => 'https://arcane-ravine-1260.herokuapp.com',
   :enable_starttls_auto => true
 }
 
