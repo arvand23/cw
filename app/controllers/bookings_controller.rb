@@ -48,7 +48,7 @@ class BookingsController < ApplicationController
 		@booking.create_permalink
 		@booking.save
 		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
-		#send email with permalink to room and time_accepted
+		NotificationMailer.confirmed(@booking).deliver
 	end
 
 	def accepttime2
@@ -57,6 +57,7 @@ class BookingsController < ApplicationController
 		@booking.create_permalink
 		@booking.save
 		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
+		NotificationMailer.confirmed(@booking).deliver
 	end
 
 	def accepttime3
@@ -65,6 +66,7 @@ class BookingsController < ApplicationController
 		@booking.create_permalink
 		@booking.save
 		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
+		NotificationMailer.confirmed(@booking).deliver
 	end
 
 	def apply

@@ -1,0 +1,5 @@
+Hi <%=@booking.user.name %>!</br>
+Here is the info about your upcoming Cakewalk session, don't miss it!</br>
+Time: <%=@booking.time_accepted%></br>
+Link: <%= link_to 'Your Private Cakewalk Room', room_booking_url(@booking.permalink) %></br>
+You will be charged after the Cakewalk session.
