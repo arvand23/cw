@@ -45,28 +45,34 @@ class BookingsController < ApplicationController
 	def accepttime1
 		@booking = Booking.find(params[:id])
 		@booking.time_accepted = @booking.time_request1
+		@current_user = current_user
 		@booking.create_permalink
 		@booking.save
 		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
 		NotificationMailer.confirmed(@booking).deliver
+		NotificationMailer.confirmedforexpert(@booking, @current_user).deliver
 	end
 
 	def accepttime2
 		@booking = Booking.find(params[:id])
 		@booking.time_accepted = @booking.time_request2
+		@current_user = current_user
 		@booking.create_permalink
 		@booking.save
 		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
 		NotificationMailer.confirmed(@booking).deliver
+		NotificationMailer.confirmedforexpert(@booking, @current_user).deliver
 	end
 
 	def accepttime3
 		@booking = Booking.find(params[:id])
 		@booking.time_accepted = @booking.time_request3
+		@current_user = current_user
 		@booking.create_permalink
 		@booking.save
 		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
 		NotificationMailer.confirmed(@booking).deliver
+		NotificationMailer.confirmedforexpert(@booking, @current_user).deliver
 	end
 
 	def apply
