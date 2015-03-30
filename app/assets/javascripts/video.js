@@ -11,19 +11,28 @@ var session = OT.initSession("45192172", sessionId);
 session.connect(sessionToken, function(error) {
 
   // If the connection is successful, initialize a publisher and publish to the session
-  if (!error) {
-    var publisher = OT.initPublisher('publisher', {
-      insertMode: 'append',
-      width: '100%',
-      height: '100%'
-    });
+		  if (!error) {
+		    var publisher = OT.initPublisher('publisher', {
+		      insertMode: 'append',
+		      width: '100%',
+		      height: '100%'
+		    });
 
-    session.publish(publisher);
-  } else {
-    console.log('There was an error connecting to the session:', error.code, error.message);
-  }
-});
+		    session.publish(publisher);
+		  } else {
+		    console.log('There was an error connecting to the session:', error.code, error.message);
+		  }
+		});
 
+	// Subscribe to a newly created stream
+
+	session.on('streamCreated', function(event) {
+	  session.subscribe(event.stream, 'subscriber', {
+	    insertMode: 'append',
+	    width: '100%',
+	    height: '100%'
+	  });
+	});
 
 });
 
