@@ -11,15 +11,7 @@
  *= require_self
  *= require_tree .
  */
- .super_booth {
- 	height: 1000px;
- }
 .booth {
-	height: 400px;
-	width: 400px;
-	margin:0 auto;
-}
-.OT_bar {
 	height: 400px;
 	width: 400px;
 	margin:0 auto;

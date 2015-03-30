@@ -29,8 +29,8 @@ session.connect(sessionToken, function(error) {
 	session.on('streamCreated', function(event) {
 	  session.subscribe(event.stream, 'subscriber', {
 	    insertMode: 'append',
-	    width: '100%',
-	    height: '100%'
+	    width: '400px',
+	    height: '400px'
 	  });
 	});
 
