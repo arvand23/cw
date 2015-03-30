@@ -1,1 +1,11 @@
+<script src='//static.opentok.com/v2/js/opentok.min.js'></script>
+
 <p>Welcome, to <%= @username %>'s live Cakewalk session.</p>
+
+
+
+<div class="booth" id='publisher' data-session-token="<%= @booking.session_token %>" data-session-id="<%= @booking.session%>"></div>
+
+
+
+

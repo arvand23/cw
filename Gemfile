@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "opentok", "~> 2.2" 
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

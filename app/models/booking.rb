@@ -35,4 +35,13 @@ class Booking < ActiveRecord::Base
     self.save
   end
 
+  def register_session!
+    # Create a session that will attempt to transmit streams directly between clients.
+    # If clients cannot connect, the session uses the OpenTok TURN server:
+    session = OPENTOK.create_session
+    
+    # Store this sessionId in the database for later use:
+    self.update!(session: session.session_id, session_token: session.generate_token)
+  end
+
 end

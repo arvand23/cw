@@ -47,6 +47,7 @@ class BookingsController < ApplicationController
 		@booking.time_accepted = @booking.time_request1
 		@current_user = current_user
 		@booking.create_permalink
+		@booking.register_session!
 		@booking.save
 		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
 		NotificationMailer.confirmed(@booking).deliver
@@ -58,6 +59,7 @@ class BookingsController < ApplicationController
 		@booking.time_accepted = @booking.time_request2
 		@current_user = current_user
 		@booking.create_permalink
+		@booking.register_session!
 		@booking.save
 		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
 		NotificationMailer.confirmed(@booking).deliver
@@ -69,6 +71,7 @@ class BookingsController < ApplicationController
 		@booking.time_accepted = @booking.time_request3
 		@current_user = current_user
 		@booking.create_permalink
+		@booking.register_session!
 		@booking.save
 		redirect_to static_home_path, :notice => "You just accepted to Cakewalk #{@booking.user.name}. Check your email inbox."
 		NotificationMailer.confirmed(@booking).deliver
