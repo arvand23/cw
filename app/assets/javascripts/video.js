@@ -37,6 +37,11 @@ session.connect(sessionToken, function(error) {
 });
 
 
+//etherpad lite jquery
+//$('#examplePadBasic').pad({'padId':'test','showChat':true, 'width':100, 'height':100});
+
+
+
 
 
 

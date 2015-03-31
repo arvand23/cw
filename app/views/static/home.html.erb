@@ -24,7 +24,9 @@
 		</br>Email: <%= f.user.email %></br>
 		</br><%= f.time_request1 %></br><%= link_to 'Select', accepttime1_booking_path(f), confirm: 'Do you want to Cakewalk this person at this time?' %>
 		</br><%= f.time_request2 %></br><%= link_to 'Select', accepttime2_booking_path(f), confirm: 'Do you want to Cakewalk this person at this time?' %>
-		</br><%= f.time_request3 %></br><%= link_to 'Select', accepttime3_booking_path(f), confirm: 'Do you want to Cakewalk this person at this time?' %>
+		</br><%= f.time_request3 %></br><%= link_to 'Select', accepttime3_booking_path(f), confirm: 'Do you want to Cakewalk this person at this time?' %></br>
+		</br>
+				</br><%= link_to 'Decline', declineuser_decline_path(f), confirm: 'Do you want to decline this request?' %>
 		<!--</br>decline this person-->
 	</br></br></br>
 	<% end %>

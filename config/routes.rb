@@ -17,6 +17,12 @@ Cw2::Application.routes.draw do
     end
   end
 
+  resources :declines do
+    member do
+      get :declineuser
+    end
+  end
+
   get "static/home"
   get "static/about"
   get "static/dashboard"
