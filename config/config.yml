@@ -1,0 +1,10 @@
+#in here username: adminkfslfjlksj
+#in html APP_CONFIG['username']
+stripe_publishable_key: pk_test_tVfU51CqRgQJDbA8AkNADxOI  
+stripe_secret_key: sk_test_f3Bg9B9plFggI2jqau5bcvd6 
+
+sendgrid_username: arvando
+sendgrid_password: syruppy 
+
+opentok_api_key: 45192172 
+opentok_api_secret: 0d7f64a0177b1d61a346a96a204a50baf46e9c5e 
